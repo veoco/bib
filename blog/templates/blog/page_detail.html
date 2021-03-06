@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% block title %}
+{{ page.title }} - {{ site_info.name }}
+{% endblock %}
+
+{% block main %}
+<article>
+  <h2><a href="{% url 'page_detail' page.slug %}">{{ page.title }}</a></h2>
+  <div class="meta">最后修改于 {{ page.modified }}</div>
+  <div>
+    {{ page.text }}
+  </div>
+</article>
+{% endblock %}
