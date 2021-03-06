@@ -50,8 +50,8 @@ class Tag(BlogMeta):
 
 
 class Post(BlogContent):
-    category = models.ManyToManyField(Category, related_name='posts', related_query_name='post')
-    tag = models.ManyToManyField(Tag, related_name='posts', related_query_name='post')
+    category = models.ManyToManyField(Category, related_name='posts', related_query_name='post', blank=True)
+    tag = models.ManyToManyField(Tag, related_name='posts', related_query_name='post', blank=True)
 
 
 class Page(BlogContent):
