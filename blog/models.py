@@ -41,7 +41,7 @@ class BlogContent(models.Model):
 
 
 class Category(BlogMeta):
-    parent = models.ForeignKey('self', on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     description = models.CharField(max_length=255)
 
 
