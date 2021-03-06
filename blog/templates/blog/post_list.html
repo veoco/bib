@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% block title %}
+{% if meta %}
+{{ meta.name }} 下的文章 - {{ site_info.name }}
+{% else %}
+首页 - {{ site_info.name }}
+{% endif %}
+{% endblock %}
+
+{% block main %}
+{% if meta %}
+<p>{{ meta.name }} 下的文章</p>
+{% endif %}
+{% for post in post_list %}
+<article>
+  <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
+  <div class="meta">最后修改于 {{ post.modified }}</div>
+  <div>
+    {{ post.text }}
+  </div>
+</article>
+{% endfor %}
+{% endblock %}
