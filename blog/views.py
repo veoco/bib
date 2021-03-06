@@ -1,11 +1,15 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView
 
-from .models import Post, Tag, Category
+from .models import Post, Tag, Category, Page
 
 
 class PostDetail(DetailView):
     model = Post
+
+
+class PageDetail(DetailView):
+    model = Page
 
 
 class PostList(ListView):
