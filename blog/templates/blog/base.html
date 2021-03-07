@@ -18,6 +18,9 @@
       {% for cate in head_cate %}
       <a href="{% url 'cate_post' cate.slug %}">{{ cate.name }}</a>
       {% endfor %}
+      {% for page in head_page %}
+      <a href="{% url 'page_detail' page.slug %}">{{ page.title }}</a>
+      {% endfor %}
     </nav>
     {% endblock %}
   </header>

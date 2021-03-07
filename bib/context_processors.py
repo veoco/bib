@@ -1,4 +1,4 @@
-from blog.models import Category
+from blog.models import Category, Page
 
 
 def site_info(request):
@@ -6,4 +6,5 @@ def site_info(request):
         'name': '游匿存储'
     }
     cate = Category.objects.all()
-    return {'site_info': info, 'head_cate': cate}
+    page = Page.objects.filter(status='public')
+    return {'site_info': info, 'head_cate': cate, 'head_page': page}
