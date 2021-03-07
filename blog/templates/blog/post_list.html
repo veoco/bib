@@ -1,4 +1,6 @@
 {% extends "blog/base.html" %}
+{% load blog_extras %}
+
 {% block title %}
 {% if meta %}
   {% if page_obj %}
@@ -23,9 +25,7 @@
 <article>
   <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
   <div class="meta">最后修改于 {{ post.modified }}</div>
-  <div>
-    {{ post.text }}
-  </div>
+  {{ post.text|markdown }}
 </article>
 
 <div class="page-nav">
