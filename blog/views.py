@@ -24,13 +24,13 @@ class PostList(ListView):
         if tag_slug:
             tag = get_object_or_404(Tag, slug=tag_slug)
             self.meta = tag
-            return Post.objects.filter(tag=tag)
+            return Post.objects.filter(tag=tag, status='public')
         elif cate_slug:
             cate = get_object_or_404(Category, slug=cate_slug)
             self.meta = cate
-            return Post.objects.filter(category=cate)
+            return Post.objects.filter(category=cate, status='public')
         else:
-            return Post.objects.all()
+            return Post.objects.filter(status='public')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
