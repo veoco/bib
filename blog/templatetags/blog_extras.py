@@ -14,3 +14,9 @@ md = Markdown(rndr)
 def markdown(content):
     result = md(content)
     return mark_safe(result)
+
+
+@register.filter()
+def text_more(content):
+    content = content.split('\n')[0]
+    return content
