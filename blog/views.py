@@ -15,6 +15,7 @@ class PageDetail(DetailView):
 class PostList(ListView):
     context_object_name = 'post_list'
     template_name = 'blog/post_list.html'
+    paginate_by = 10
     meta = None
 
     def get_queryset(self):
