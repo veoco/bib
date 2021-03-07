@@ -21,6 +21,11 @@ class BlogMeta(models.Model):
 
 
 class BlogContent(models.Model):
+    class Status(models.TextChoices):
+        PUBLIC = 'public', '公开'
+        PRIVATE = 'private', '私密'
+        DRAFT = 'draft', '草稿'
+
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
@@ -34,7 +39,7 @@ class BlogContent(models.Model):
         related_query_name='%(class)s'
     )
     template = models.CharField(max_length=255, blank=True, null=True)
-    status = models.CharField(max_length=255)
+    status = models.CharField(max_length=255, choices=Status.choices)
     password = models.CharField(max_length=255, blank=True, null=True)
     allow_comment = models.BooleanField(default=True)
     allow_ping = models.BooleanField(default=True)
