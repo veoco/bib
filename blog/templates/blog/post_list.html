@@ -25,7 +25,7 @@
 <article>
   <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
   <div class="meta">最后修改于 {{ post.modified }}</div>
-  {{ post.text|markdown }}
+  {{ post.text|text_more|markdown }}
 </article>
 
 <div class="page-nav">
