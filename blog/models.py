@@ -14,6 +14,7 @@ class BlogMeta(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-order']
 
     def __str__(self):
         return self.name
@@ -41,6 +42,7 @@ class BlogContent(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-order', '-created']
 
     def __str__(self):
         return self.title
