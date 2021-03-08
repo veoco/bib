@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'blog'
 ]
 
@@ -53,6 +54,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'bib.urls'
 
 AUTH_USER_MODEL = 'blog.User'
+
+SITE_ID = 1
 
 TEMPLATES = [
     {
