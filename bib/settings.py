@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_comments',
+    'blog_comment',
     'blog'
 ]
 
@@ -56,6 +58,8 @@ ROOT_URLCONF = 'bib.urls'
 AUTH_USER_MODEL = 'blog.User'
 
 SITE_ID = 1
+
+COMMENTS_APP = 'blog_comment'
 
 TEMPLATES = [
     {
