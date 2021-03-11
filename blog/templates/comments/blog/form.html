@@ -1,0 +1,32 @@
+{% load comments %}
+
+<div>
+  <form action="{% comment_form_target %}" method="post">
+    {% csrf_token %}
+    {% if post.slug %}
+    <input type="hidden" name="next" value="{% url 'post_detail' post.slug %}"/>
+    {% elif page.slug %}
+    <input type="hidden" name="next" value="{% url 'page_detail' page.slug %}"/>
+    {% endif %}
+
+    {% for field in form %}
+      {% if field.is_hidden %}
+      {{ field }}
+      {% elif field.name == "honeypot" %}
+      <p style="display:none;">{{ field.label_tag }} {{ field }}</p>
+      {% endif %}
+    {% endfor %}
+    <p>
+      <label for="name" class="required">称呼</label>
+      <input type="text" name="name" id="name" class="res-text" value="" required />
+
+      <label for="email" class="required">邮箱</label>
+      <input type="email" name="email" id="email" class="res-text" value="" required />
+
+      <label for="url" class="required">网址</label>
+      <input type="url" name="url" id="url" class="res-text" value="" required />
+    </p>
+    <p><textarea rows="8" cols="50" name="comment" id="comment" class="textarea" required ></textarea></p>
+    <p><input type="submit" name="post" class="res-submit" value="提交"/></p>
+  </form>
+</div>
