@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-{% load blog_extras %}
+{% load blog_extras comments %}
 
 {% block title %}
 {{ page.title }} - {{ site_info.name }}
@@ -11,4 +11,8 @@
   <div class="meta">最后修改于 {{ page.modified }}</div>
   {{ page.text|markdown }}
 </article>
+<div class="comments">
+  {% render_comment_list for page %}
+  {% render_comment_form for page %}
+</div>
 {% endblock %}

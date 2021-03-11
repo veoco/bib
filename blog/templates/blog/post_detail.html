@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-{% load blog_extras %}
+{% load blog_extras comments %}
 
 {% block title %}
 {{ post.title }} - {{ site_info.name }}
@@ -18,4 +18,8 @@
     </nav>
   </div>
 </article>
+<div class="comments">
+  {% render_comment_list for post %}
+  {% render_comment_form for post %}
+</div>
 {% endblock %}
