@@ -1,0 +1,13 @@
+{% load comments %}
+
+<ol>
+{% for comment in comment_list %}
+  <li>
+    <h5 class="cm-author">{{ comment.user_name }}</h5>
+    <div class="cm-meta">发布于 {{ comment.submit_date }}</div>
+    <div class="cm-content">
+    {{ comment.comment }}
+    </div>
+  </li>
+{% endfor %}
+</ol>
