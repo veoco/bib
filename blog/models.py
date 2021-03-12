@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 
 
 class User(AbstractUser):
@@ -57,15 +58,23 @@ class Category(BlogMeta):
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     description = models.CharField(max_length=255)
 
+    def get_absolute_url(self):
+        return reverse('cate_post', args=[self.slug])
+
 
 class Tag(BlogMeta):
-    pass
+    def get_absolute_url(self):
+        return reverse('tag_post', args=[self.slug])
 
 
 class Post(BlogContent):
     category = models.ManyToManyField(Category, related_name='posts', related_query_name='post', blank=True)
     tag = models.ManyToManyField(Tag, related_name='posts', related_query_name='post', blank=True)
 
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[self.slug])
+
 
 class Page(BlogContent):
-    pass
+    def get_absolute_url(self):
+        return reverse('page_detail', args=[self.slug])
