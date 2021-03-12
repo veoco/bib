@@ -7,7 +7,7 @@
 
 {% block main %}
 <article>
-  <h2><a href="{% url 'page_detail' page.slug %}">{{ page.title }}</a></h2>
+  <h2><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h2>
   <div class="meta">最后修改于 {{ page.modified }}</div>
   {{ page.text|markdown }}
 </article>

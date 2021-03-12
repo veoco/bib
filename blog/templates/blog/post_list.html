@@ -23,7 +23,7 @@
 {% endif %}
 {% for post in post_list %}
 <article>
-  <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
+  <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
   <div class="meta">最后修改于 {{ post.modified }}</div>
   {{ post.text|text_more|markdown }}
 </article>

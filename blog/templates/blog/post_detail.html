@@ -7,13 +7,13 @@
 
 {% block main %}
 <article>
-  <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h2>
+  <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
   <div class="meta">最后修改于 {{ post.modified }}</div>
   {{ post.text|markdown }}
   <div class="tag">
     <nav>
       {% for tag in post.tag.all %}
-      <a href="{% url 'tag_post' tag.slug %}">{{ tag.name }}</a>
+      <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
       {% endfor %}
     </nav>
   </div>
