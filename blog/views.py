@@ -1,11 +1,19 @@
 from django.shortcuts import get_object_or_404
+from django.http import Http404
 from django.views.generic import DetailView, ListView
 
 from .models import Post, Tag, Category, Page
 
 
 class PostDetail(DetailView):
-    model = Post
+    context_object_name = 'post'
+
+    def get_object(self, queryset=None):
+        post_slug = self.kwargs.get('slug', None)
+        post = Post.objects.get(slug=post_slug)
+        if post.password:
+            raise Http404
+        return post
 
 
 class PageDetail(DetailView):
